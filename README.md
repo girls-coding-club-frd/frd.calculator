@@ -1,3 +1,3 @@
 # frd.calculator
 Calculate the cost of a recipe
-DO NOT READ THIS!!! (IT'S FOR YOUR OWN GOOD!)
+Hello and welcome to FrdLand. (Frd is slang for food, by the way.) We hope you have fun in FrdLand!
