@@ -15,10 +15,10 @@ class Cost:
         self.measure = measure
 
 class Ingredient:
-    def __init__(self, quantity, measure, thing):
+    def __init__(self, quantity, measure, stuff):
         self.quantity = quantity
         self.measure = measure
-        self.thing = thing
+        self.stuff = stuff
         self.cost = None  # The cost for the large unit of this
         self.price = None  # The price for just this much; What we're ultimately after
 
@@ -28,7 +28,7 @@ class Ingredient:
             remainder += f"\nPurchased for ${self.cost.money} per {self.cost.quantity} {self.cost.measure}"
         if self.price:
             remainder += f"Total price for this ingredient: ${self.price}"
-        return f"{self.quantity} {self.measure} of {self.thing}.{remainder}"
+        return f"{self.quantity} {self.measure} of {self.stuff}.{remainder}"
 
 class Recipe:
     def __init__(self, name):
@@ -87,13 +87,13 @@ def add_costs(recipe):
     print("For example, if 5 pounds of flour cost $2.19,")
     print("We'd put 2.19 for the price, 5 for the quantity, and pounds for the unit")
     for item in recipe.ingredients:
-        price = float(input(f"How much did you pay for {item.thing}? $"))
-        qty = input(f"And what's the quantity of {item.thing} you get for ${price:.2f}? ")
+        price = float(input(f"How much did you pay for {item.stuff}? $"))
+        qty = input(f"And what's the quantity of {item.stuff} you get for ${price:.2f}? ")
         if '/' in qty:
             qty = float(sum(Fraction(s) for s in qty.split()))
         else:
             qty = float(qty)
-        measure = input(f"Finally, you get {qty} WHATs of {item.thing} for ${price:.2f}? ")
+        measure = input(f"Finally, you get {qty} WHATs of {item.stuff} for ${price:.2f}? ")
         item.cost = Cost(float(price), float(qty), measure)
     print("Great! Now we're done collecting information.")
     print("Give me a moment to calculate your actual price for this recipe...")
@@ -138,6 +138,8 @@ def check_special_cases(item):
             conversion_rate = 2.0
         elif "cocoa" in comparison_name:
             conversion_rate = 3.55
+        elif "baking soda" == comparision_name:
+              conversion_rate = 0.51
         # TODO: ADD MORE ITEMS HERE AS YOU LEARN THEM
         convert_mass_to_volume(item.cost, conversion_rate)
 
@@ -163,10 +165,10 @@ def print_recipe_costs(recipe):
     print(f"Costs for recipe {recipe.name}:")
     for ingredient in recipe.ingredients:
         if ingredient.price:
-            print(f"{ingredient.thing}: ${ingredient.price:.2f}")
+            print(f"{ingredient.stuff}: ${ingredient.price:.2f}")
             total += ingredient.price
         else:
-            print(f"Don't have price for {ingredient.thing}")
+            print(f"Don't have price for {ingredient.stuff}")
     print(f"Total: ${total:.2f}")
 
 if __name__ == "__main__":
