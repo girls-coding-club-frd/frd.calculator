@@ -43,7 +43,7 @@ def read_recipe():
     print("First you will enter the recipe,")
     print("Then I will ask for the cost of the ingredients.")
     print("When we are done, I will print the cost of the recipe.")
-    good_to_go = input("Shall we get started? (y/N)")
+    good_to_go = input("Shall we get started? (y/n)")
     if not good_to_go[0] in ['Y','y']:
         print("OK. Maybe next time.")
         sys.exit(0)
@@ -127,7 +127,7 @@ def check_special_cases(item):
             and not ureg[item.measure].dimensionality == ureg.lbs.dimensionality:
         # Set default conversion rate:
         conversion_rate = 2.0  # pounds per cup
-        comparison_name = item.thing.lower().strip()
+        comparison_name = item.stuff.lower().strip()
         if "flour" in comparison_name:
             conversion_rate = 3.33
         elif "butter" == comparison_name:
@@ -138,7 +138,7 @@ def check_special_cases(item):
             conversion_rate = 2.0
         elif "cocoa" in comparison_name:
             conversion_rate = 3.55
-        elif "baking soda" == comparision_name:
+        elif "baking soda" == comparison_name:
               conversion_rate = 0.51
         # TODO: ADD MORE ITEMS HERE AS YOU LEARN THEM
         convert_mass_to_volume(item.cost, conversion_rate)
@@ -176,4 +176,3 @@ if __name__ == "__main__":
     add_costs(recipe)
     calculate_recipe_prices(recipe)
     print_recipe_costs(recipe)
-
