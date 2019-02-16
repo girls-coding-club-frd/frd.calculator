@@ -1,6 +1,6 @@
-"""
+""""
 frd_calculator takes a recipe and calculates the cost of the recipe based on the bulk price of the ingredients.
-"""
+""""
 
 import pint
 from fractions import Fraction
